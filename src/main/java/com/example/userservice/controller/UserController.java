@@ -1,6 +1,6 @@
 package com.example.userservice.controller;
 
-import com.example.userservice.model.User;
+import com.example.userservice.model.UserEntity;
 import com.example.userservice.service.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,27 +20,27 @@ public class UserController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<User> createUser(@RequestBody User user) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(userService.createUser(user));
+    public ResponseEntity<UserEntity> createUser(@RequestBody UserEntity userEntity) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(userService.createUser(userEntity));
     }
     @GetMapping
-    public ResponseEntity<List<User>> getAllUsers() {
+    public ResponseEntity<List<UserEntity>> getAllUsers() {
         return ResponseEntity.status(HttpStatus.OK).body(userService.getAllUsers());
     }
     @GetMapping("/{id}")
-    public ResponseEntity<User> getAllUsers(@PathVariable("id") String id) {
+    public ResponseEntity<UserEntity> getAllUsers(@PathVariable("id") String id) {
         return ResponseEntity.status(HttpStatus.OK).body(userService.getUserById(id));
     }
     @PutMapping("/{id}")
-    public ResponseEntity<User> updateUserById(@PathVariable("id") String id,@RequestBody User user) {
-        return ResponseEntity.status(HttpStatus.OK).body(userService.updateUserById(id,user));
+    public ResponseEntity<UserEntity> updateUserById(@PathVariable("id") String id, @RequestBody UserEntity userEntity) {
+        return ResponseEntity.status(HttpStatus.OK).body(userService.updateUserById(id, userEntity));
     }
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteUser(@PathVariable("id") String id) {
         return ResponseEntity.status(HttpStatus.OK).body(userService.deleteUser(id));
     }
-    @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteUser() {
+    @DeleteMapping
+    public ResponseEntity<String> deleteAllUser() {
         return ResponseEntity.status(HttpStatus.OK).body(userService.deleteAllUsers());
     }
 }

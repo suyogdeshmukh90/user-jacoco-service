@@ -1,14 +1,14 @@
 package com.example.userservice.service;
 
-import com.example.userservice.model.User;
+import com.example.userservice.model.UserEntity;
 
 import java.util.List;
 
 public interface UserService {
-    public User createUser(User user);
-    public List<User> getAllUsers();
-    public User getUserById(String id);
-    public User updateUserById(String id, User user);
+    public UserEntity createUser(UserEntity userEntity);
+    public List<UserEntity> getAllUsers();
+    public UserEntity getUserById(String id);
+    public UserEntity updateUserById(String id, UserEntity userEntity);
     public String deleteUser(String id);
     public String deleteAllUsers();
 }
